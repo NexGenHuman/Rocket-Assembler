@@ -43,11 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraphicalFuncs\FileLoader.cs" />
+    <Compile Include="GraphicalFuncs\PresetGraphicDrawer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UtilityFuncs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="disclaimer.txt" />
+    <Content Include="GraphicalFuncs\Graphics\are_you_sure.txt" />
+    <Content Include="GraphicalFuncs\Graphics\disclaimer.txt" />
+    <Content Include="GraphicalFuncs\Graphics\goodbye.txt" />
+    <Content Include="GraphicalFuncs\Graphics\menu.txt" />
+    <Content Include="GraphicalFuncs\Graphics\welcome.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
