@@ -33,36 +33,50 @@ namespace RocketAssembler
                 PresetGraphicDrawer.PresetGraphicDraw(2, ConsoleColor.Gray);
                 //REMEMBER TO PUT CONTROLS AT THE BOTTOM
 
+                SelectorArrow arrow = new SelectorArrow(new Tuple<int, int>(11, 9), TextInitializer.menuCounter, 2);
+
                 bool decided = false;
+
+                bool usedEnter = false;
 
                 while (!decided)
                 {
-                    char choice = Console.ReadKey(true).KeyChar;
+                    ConsoleKey choice;
+
+                    if(!usedEnter)
+                    {
+                        choice = Console.ReadKey(true).Key;
+                    }
+                    else
+                    {
+                        Enum.TryParse<ConsoleKey>("D" + (arrow.current + 1) , out choice);
+                        usedEnter = false;
+                    }
 
                     switch (choice)
                     {
                         //Build a rocket
-                        case '1':
+                        case ConsoleKey.D1:
                             decided = true;
                             break;
                         //Rocket list
-                        case '2':
+                        case ConsoleKey.D2:
                             decided = true;
                             break;
                         //Compare rockets
-                        case '3':
+                        case ConsoleKey.D3:
                             decided = true;
                             break;
                         //Part list
-                        case '4':
+                        case ConsoleKey.D4:
                             decided = true;
                             break;
                         //Compare parts
-                        case '5':
+                        case ConsoleKey.D5:
                             decided = true;
                             break;
                         //Change language
-                        case '6':
+                        case ConsoleKey.D6:
                             decided = true;
                             //TEMP
                             if (ProgramSetup.lang == "eng")
@@ -74,10 +88,19 @@ namespace RocketAssembler
                             Console.Clear();
                             break;
                         //Exit
-                        case '7':
+                        case ConsoleKey.D7:
                             decided = true;
                             Console.Clear();
                             running = PresetGraphicDrawer.AreYouSureScreen();
+                            break;
+                        case ConsoleKey.W:
+                            arrow.moveArrow(false);
+                            break;
+                        case ConsoleKey.S:
+                            arrow.moveArrow(true);
+                            break;
+                        case ConsoleKey.Enter:
+                            usedEnter = true;
                             break;
                         default:
                             break;

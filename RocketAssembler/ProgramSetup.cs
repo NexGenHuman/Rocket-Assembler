@@ -15,6 +15,8 @@ namespace RocketAssembler
         {
             TextInitializer.InitializeText(lang);
             TextInitializer.LoadASCIIart();
+
+            Console.CursorVisible = false;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace RocketAssembler.UtilityFuncs
 
         public static void InitializeText(string lang)
         {
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(RocketAssembler.Program.directory + @"\Text.json"))
+            using (System.IO.StreamReader reader = new System.IO.StreamReader(RocketAssembler.Program.directory + @"\JsonFiles\Text.json"))
             {
                 //RESET
                 menuCounter = 0;
