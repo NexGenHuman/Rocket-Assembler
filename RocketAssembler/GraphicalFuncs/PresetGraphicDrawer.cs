@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RocketAssembler.UtilityFuncs;
 
 namespace RocketAssembler.GraphicalFuncs
 {
@@ -11,12 +12,8 @@ namespace RocketAssembler.GraphicalFuncs
         const int margin = 10;
         const int minWidth = 12;
 
-        static public string disclaimer;
-        static public string welcome;
-        static public string menu;
-        static public string goodbye;
-        static public string are_you_sure;
-
+        const int menuPosX = 15;
+        const int menuPosY = 6;
 
         static string[] TextDivider(int width, string original)
         {
@@ -86,19 +83,22 @@ namespace RocketAssembler.GraphicalFuncs
             switch(option)
             {
                 case 0:
-                    WriteCentered(disclaimer, Console.WindowWidth, 10);
+                    WriteCentered(TextInitializer.disclaimer, Console.WindowWidth, 10);
                     break;
                 case 1:
-                    WriteCentered(welcome, Console.WindowWidth, 10);
+                    WriteCentered(TextInitializer.title, Console.WindowWidth, 7);
+                    WriteCentered(TextInitializer.welcome, Console.WindowWidth, 2);
                     break;
                 case 2:
-                    WritePaddedLeft(menu, 15, 3);
+                    WritePaddedLeft(TextInitializer.menu, menuPosX, menuPosY);
+                    Console.SetCursorPosition(0, 0);
+                    WritePaddedLeft(TextInitializer.logo, 50, 4);
                     break;
                 case 3:
-                    WriteCentered(goodbye, Console.WindowWidth, 5);
+                    WriteCentered(TextInitializer.goodbye, Console.WindowWidth, 5);
                     break;
                 case 4:
-                    WriteCentered(are_you_sure, Console.WindowWidth, 15);
+                    WriteCentered(TextInitializer.areYouSure, Console.WindowWidth, 15);
                     break;
                 default:
                     WriteCentered("Unavailable preset No." + option + " chosen.", Console.WindowWidth, 10);
@@ -112,17 +112,25 @@ namespace RocketAssembler.GraphicalFuncs
             while (true)
             {
                 PresetGraphicDraw(4, ConsoleColor.DarkRed);
-                char choice = Char.ToLower(Console.ReadKey().KeyChar);
 
-                switch (choice)
+                bool decided = false;
+
+                while (!decided)
                 {
-                    case 'y':
-                        return false;
-                    case 'n':
-                        return true;
-                    default:
-                        Console.Clear();
-                        break;
+
+                    char choice = Char.ToLower(Console.ReadKey(true).KeyChar);
+
+                    switch (choice)
+                    {
+                        case 'y':
+                            decided = true;
+                            return false;
+                        case 'n':
+                            decided = true;
+                            return true;
+                        default:
+                            break;
+                    }
                 }
             }
         }

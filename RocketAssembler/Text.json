@@ -1,0 +1,57 @@
+{
+  "eng": {
+    "are_you_sure": [
+      "Are you sure you want to quit?",
+      "[ Y/N ]"
+    ],
+
+    "disclaimer": [
+      "Disclaimer!",
+      "This application does not represent real process of assembling rockets.",
+      "In the real world there are numbers of limitations that wouldn't allow for most of the combinations.",
+      "However, the specifications are BASED on real-world hardware."
+    ],
+
+    "menu": [
+      "Build a rocket",
+      "Rocket list",
+      "Compare rockets",
+      "Part list",
+      "Part comparision",
+      "Change language",
+      "EXIT"
+    ],
+
+    "welcome": [
+      "WELCOME"
+    ]
+  },
+
+  "pl": {
+    "are_you_sure": [
+      "Czy jestes pewien ze chcesz wyjsc?",
+      "[ Y/N ]"
+    ],
+
+    "disclaimer": [
+      "Uwaga!",
+      "Ta aplikacja nie reprezentuje rzeczywistego procesu budowy rakiet.",
+      "W rzeczywistosci istnieje wiele ograniczen ktore nie pozwalaja na wiekszosc kombinacji.",
+      "Jednakze, specyfikacje sa BAZOWANE na prawdziwym sprzecie."
+    ],
+
+    "menu": [
+      "Buduj rakiete",
+      "Lista rakiet",
+      "Porownaj rakiety",
+      "Lista czesci",
+      "Porownanie czesci",
+      "Zmien jezyk",
+      "WYJSCIE"
+    ],
+
+    "welcome": [
+      "WITAJ"
+    ]
+  }
+}

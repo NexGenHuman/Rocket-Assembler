@@ -1,4 +1,0 @@
-Disclaimer!
-This application does not represent real process of assembling rockets.
-In the real world there are numbers of limitations that wouldn't allow for most of the combinations.
-However, the specifications are BASED on real-world hardware.
