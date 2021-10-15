@@ -1,25 +1,60 @@
 {
-  "solid_fuel_thrusters": {
+  "solid_fuel_boosters": [
+    {
+      "name": "GEM-63XL",
+      "empty_mass": 5,
+      "fuel_mass": 48,
+      "thrust": 2026,
+      "specific_impulse": 280,
+      "burn_time": 84
+    },
 
-  },
+    {
+      "name": "GEM-40",
+      "empty_mass": 1,
+      "fuel_mass": 12,
+      "thrust": 499,
+      "specific_impulse": 283,
+      "burn_time": 63
+    },
 
-  "atmospheric_engines": {
+    {
+      "name": "GEM-46",
+      "empty_mass": 2,
+      "fuel_mass": 17,
+      "thrust": 601,
+      "specific_impulse": 284,
+      "burn_time": 77
+    },
 
-  },
+    {
+      "name": "SS - SRB",
+      "empty_mass": 90,
+      "fuel_mass": 500,
+      "thrust": 12500,
+      "specific_impulse": 242,
+      "burn_time": 124
+    },
 
-  "main_stages": {
+    {
+      "name": "UA120",
+      "empty_mass": 50,
+      "fuel_mass": 270,
+      "thrust": 14234,
+      "specific_impulse": 272,
+      "burn_time": 120
+    }
+  ],
 
-  },
+  "main_stages": [
 
-  "orbital_engines": {
+  ],
 
-  },
+  "orbital_stages": [
 
-  "orbital_stages": {
+  ],
 
-  },
+  "capsules": [
 
-  "capsules": {
-
-  }
+  ]
 }
