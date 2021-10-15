@@ -94,9 +94,11 @@ namespace RocketAssembler
                             running = PresetGraphicDrawer.AreYouSureScreen();
                             break;
                         case ConsoleKey.W:
+                        case ConsoleKey.UpArrow:
                             arrow.moveArrow(false);
                             break;
                         case ConsoleKey.S:
+                        case ConsoleKey.DownArrow:
                             arrow.moveArrow(true);
                             break;
                         case ConsoleKey.Enter:
