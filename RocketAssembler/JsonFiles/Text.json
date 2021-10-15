@@ -1,4 +1,4 @@
-{
+﻿{
   "eng": {
     "are_you_sure": [
       "Are you sure you want to quit?",
@@ -24,6 +24,13 @@
 
     "welcome": [
       "WELCOME"
+    ],
+
+    "menu_controls": [
+      " W,↑ - Cursor up ",
+      " S,↓ - Cursor down ",
+      " Enter - Select using cursor ",
+      " 1-7 - Select using numbers "
     ]
   },
 
@@ -52,6 +59,13 @@
 
     "welcome": [
       "WITAJ"
+    ],
+
+    "menu_controls": [
+      " W,↑ - Kursor w gore ",
+      " S,↓ - Kursor w dol ",
+      " Enter - Wybierz na pozycji kursora ",
+      " 1-7 - Wybierz numerami "
     ]
   }
 }

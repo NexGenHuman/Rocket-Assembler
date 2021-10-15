@@ -17,6 +17,7 @@ namespace RocketAssembler
             TextInitializer.LoadASCIIart();
 
             Console.CursorVisible = false;
+            Console.WindowWidth = 120;
         }
     }
 }

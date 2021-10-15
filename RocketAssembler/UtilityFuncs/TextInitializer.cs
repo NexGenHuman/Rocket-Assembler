@@ -20,6 +20,9 @@ namespace RocketAssembler.UtilityFuncs
         public static string logo;
         public static string title;
 
+        //---CONTROLS---
+        public static List<string> menuControls = new List<string>();
+
         public static int menuCounter;
 
         public static void InitializeText(string lang)
@@ -32,6 +35,7 @@ namespace RocketAssembler.UtilityFuncs
                 disclaimer = "";
                 menu = "";
                 welcome = "";
+                menuControls.Clear();
 
                 string JSONtext = reader.ReadToEnd();
                 JObject Jobj = JObject.Parse(JSONtext);
@@ -57,6 +61,11 @@ namespace RocketAssembler.UtilityFuncs
                 foreach (var str in Jobj[lang]["welcome"])
                 {
                     welcome += str + "\n";
+                }
+
+                foreach (var str in Jobj[lang]["menu_controls"])
+                {
+                    menuControls.Add(str + "");
                 }
 
                 reader.Close();

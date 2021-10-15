@@ -134,5 +134,32 @@ namespace RocketAssembler.GraphicalFuncs
                 }
             }
         }
+
+        static public void WriteControls(List<string> controls)
+        {
+            Console.SetCursorPosition(0, Console.WindowHeight - 1);
+            //Console.BackgroundColor = ConsoleColor.Gray;
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("▒");
+            }
+            Console.ResetColor();
+
+            Console.SetCursorPosition(0, Console.WindowHeight - 1);
+
+            int controlsLength = 0;
+            foreach (string s in controls)
+                controlsLength += s.Length;
+
+            int spacing = (Console.WindowWidth - controlsLength) / (controls.Count + 1);
+
+            foreach(string control in controls)
+            {
+                Console.SetCursorPosition(Console.CursorLeft + spacing, Console.WindowHeight - 1);
+                Console.Write(control);
+            }
+
+            Console.SetCursorPosition(0, 0);
+        }
     }
 }

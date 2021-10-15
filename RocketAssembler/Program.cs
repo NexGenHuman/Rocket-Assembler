@@ -31,6 +31,7 @@ namespace RocketAssembler
             while(running)
             {
                 PresetGraphicDrawer.PresetGraphicDraw(2, ConsoleColor.Gray);
+                PresetGraphicDrawer.WriteControls(TextInitializer.menuControls);
                 //REMEMBER TO PUT CONTROLS AT THE BOTTOM
 
                 SelectorArrow arrow = new SelectorArrow(new Tuple<int, int>(11, 9), TextInitializer.menuCounter, 2);
