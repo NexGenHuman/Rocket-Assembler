@@ -56,27 +56,32 @@ namespace RocketAssembler
 
                     switch (choice)
                     {
-                        //Build a rocket
+                        //-------------------------------Build a rocket
                         case ConsoleKey.D1:
                             decided = true;
                             break;
-                        //Rocket list
+
+                        //-------------------------------Rocket list
                         case ConsoleKey.D2:
                             decided = true;
                             break;
-                        //Compare rockets
+
+                        //-------------------------------Compare rockets
                         case ConsoleKey.D3:
                             decided = true;
                             break;
-                        //Part list
+
+                        //-------------------------------Part list
                         case ConsoleKey.D4:
                             decided = true;
                             break;
-                        //Compare parts
+
+                        //-------------------------------Compare parts
                         case ConsoleKey.D5:
                             decided = true;
                             break;
-                        //Change language
+
+                        //-------------------------------Change language
                         case ConsoleKey.D6:
                             decided = true;
                             //TEMP
@@ -88,23 +93,31 @@ namespace RocketAssembler
                             TextInitializer.InitializeText(ProgramSetup.lang);
                             Console.Clear();
                             break;
-                        //Exit
+
+                        //-------------------------------Exit
                         case ConsoleKey.D7:
                             decided = true;
                             Console.Clear();
                             running = PresetGraphicDrawer.AreYouSureScreen();
                             break;
+
+                        //-------------------------------Move the arrow up
                         case ConsoleKey.W:
                         case ConsoleKey.UpArrow:
                             arrow.moveArrow(false);
                             break;
+
+                        //-------------------------------Move the arrow down
                         case ConsoleKey.S:
                         case ConsoleKey.DownArrow:
                             arrow.moveArrow(true);
                             break;
+
+                        //-------------------------------Select on arrow
                         case ConsoleKey.Enter:
                             usedEnter = true;
                             break;
+
                         default:
                             break;
                     }

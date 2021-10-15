@@ -18,6 +18,7 @@ namespace RocketAssembler
 
             Console.CursorVisible = false;
             Console.WindowWidth = 120;
+            Console.WindowHeight = 35;
         }
     }
 }

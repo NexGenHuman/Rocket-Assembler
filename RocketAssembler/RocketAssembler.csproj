@@ -51,17 +51,18 @@
     <Compile Include="GraphicalFuncs\PresetGraphicDrawer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubMenus\PartsList.cs" />
     <Compile Include="UtilityFuncs\TextInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="JsonFiles\Parts.json" />
     <None Include="JsonFiles\Properties.json" />
     <None Include="JsonFiles\Text.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="disclaimer.txt" />
     <Content Include="GraphicalFuncs\ASCIIart\goodbye.txt" />
     <Content Include="GraphicalFuncs\ASCIIart\logo.txt" />
     <Content Include="GraphicalFuncs\ASCIIart\title.txt" />
