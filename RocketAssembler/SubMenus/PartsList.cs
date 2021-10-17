@@ -35,17 +35,33 @@ namespace RocketAssembler.SubMenus
 
         static string partDescription(Part part)
         {
-            Console.Write(TextInitializer.type + ": ");
+            string returnString = TextInitializer.name + ": " + part.name + "\n" + TextInitializer.type + ": ";
 
             if(part is Propolsion)
             {
-                if(part is Solid_Fuel_Booster)
-                    Console.
+                if (part is Solid_Fuel_Booster)
+                    returnString += TextInitializer.solid_fuel_booster + "\n";
+                else if (part is Main_Stage)
+                    returnString += TextInitializer.main_stage + "\n";
+                else
+                    returnString += TextInitializer.orbital_stage + "\n";
+
+                Propolsion propolsion = part as Propolsion;
+                returnString += TextInitializer.empty_mass + ": " + propolsion.empty_mass + "t\n";
+                returnString += TextInitializer.fuel_mass + ": " + propolsion.fuel_mass + "t\n";
+                returnString += TextInitializer.thrust + ": " + propolsion.thrust + "kN\n";
+                returnString += TextInitializer.specific_impulse + ": " + propolsion.specific_impulse + "s\n";
+                returnString += TextInitializer.burn_time + ": " + propolsion.burn_time + "s";
             }
             else
             {
-
+                returnString += TextInitializer.capsule + "\n";
+                Capsule capsule = part as Capsule;
+                returnString += TextInitializer.crew + ": " + capsule.crew + "\n";
+                returnString += TextInitializer.design_life + ": " + capsule.design_life + "d\n";
             }
+
+            return returnString;
         }
 
         static public void DrawPartsList()
@@ -58,7 +74,8 @@ namespace RocketAssembler.SubMenus
             Console.SetCursorPosition(0, 0);
             PresetGraphicDrawer.PresetGraphicDraw("partsList", ConsoleColor.Gray);
             Console.SetCursorPosition(0, 0);
-            PresetGraphicDrawer.WritePaddedLeft(, 30, 6)
+            if (allParts.Count != 0)
+                PresetGraphicDrawer.WritePaddedLeft(partDescription(allParts[0]), 30, 6);
             Console.SetCursorPosition(0, 0);
 
             int prevCursorPos = 0;

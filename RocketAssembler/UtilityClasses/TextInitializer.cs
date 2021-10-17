@@ -92,10 +92,10 @@ namespace RocketAssembler.UtilityClasses
                 burn_time = Jobj[lang]["descriptors"]["burn_time"] + "";
                 crew = Jobj[lang]["descriptors"]["crew"] + "";
                 design_life = Jobj[lang]["descriptors"]["design_life"] + "";
-                solid_fuel_booster = Jobj[lang]["descriptors"]["solid_fuel_boosters"] + "";
-                main_stage = Jobj[lang]["descriptors"]["main_stages"] + ""; ;
-                orbital_stage = Jobj[lang]["descriptors"]["orbital_stages"] + ""; ;
-                capsule = Jobj[lang]["descriptors"]["capsules"] + ""; ;
+                solid_fuel_booster = Jobj[lang]["descriptors"]["solid_fuel_booster"] + "";
+                main_stage = Jobj[lang]["descriptors"]["main_stage"] + ""; ;
+                orbital_stage = Jobj[lang]["descriptors"]["orbital_stage"] + ""; ;
+                capsule = Jobj[lang]["descriptors"]["capsule"] + ""; ;
 
                 reader.Close();
             }
