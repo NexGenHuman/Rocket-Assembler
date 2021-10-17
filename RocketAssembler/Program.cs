@@ -77,7 +77,6 @@ namespace RocketAssembler
                         //-------------------------------Part list
                         case ConsoleKey.D4:
                             decided = true;
-                            PartsList.loadParts();
                             PartsList.DrawPartsList();
                             break;
 

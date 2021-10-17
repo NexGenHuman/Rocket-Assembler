@@ -148,12 +148,12 @@ namespace RocketAssembler.GraphicalFuncs
         static public void WriteControls(List<string> controls)
         {
             Console.SetCursorPosition(0, Console.WindowHeight - 1);
-            //Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Gray;
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("▒");
             }
-            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.SetCursorPosition(0, Console.WindowHeight - 1);
 

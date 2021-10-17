@@ -70,25 +70,65 @@ namespace RocketAssembler.SubMenus
 
             bool running = true;
 
+            Tuple<int, int> partPos = new Tuple<int, int>(35, 6);
+
             SelectorArrow arrow = new SelectorArrow(new Tuple<int, int>(11, 6), allParts.Count, 1);
             Console.SetCursorPosition(0, 0);
             PresetGraphicDrawer.PresetGraphicDraw("partsList", ConsoleColor.Gray);
             Console.SetCursorPosition(0, 0);
             if (allParts.Count != 0)
-                PresetGraphicDrawer.WritePaddedLeft(partDescription(allParts[0]), 30, 6);
+                PresetGraphicDrawer.WritePaddedLeft(partDescription(allParts[0]), partPos.Item1, partPos.Item2);
             Console.SetCursorPosition(0, 0);
+            PresetGraphicDrawer.WriteControls(TextInitializer.partsListControls);
 
             int prevCursorPos = 0;
+            int prevWidth = 0, prevHeight = 0;
 
             while (running)
             {
-                ConsoleKey choice = Console.ReadKey(true).Key;
-
                 if(prevCursorPos != arrow.current)
                 {
+                    Console.SetCursorPosition(partPos.Item1, partPos.Item2);
+                    for(int i = 0; i < prevHeight; i++)
+                    {
+                        for (int j = 0; j < prevWidth; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                        Console.SetCursorPosition(partPos.Item1, partPos.Item2 + i);
+                    }
+                    prevHeight = 1;
+                    prevWidth = 0;
 
                     Console.SetCursorPosition(0, 0);
+
+                    string toWrite = partDescription(allParts[arrow.current]);
+
+                    int tempCounter = 0;
+
+                    foreach(char ch in toWrite)
+                    {
+                        if (ch != '\n')
+                            tempCounter++;
+                        else
+                        {
+                            prevHeight++;
+                            if (tempCounter > prevWidth)
+                                prevWidth = tempCounter;
+                            tempCounter = 0;
+                        }
+                    }
+                    prevHeight++;
+
+                    if (tempCounter > prevWidth)
+                        prevWidth = tempCounter;
+
+
+                    PresetGraphicDrawer.WritePaddedLeft(toWrite, partPos.Item1, partPos.Item2);
+                    Console.SetCursorPosition(0, 0);
                 }
+
+                ConsoleKey choice = Console.ReadKey(true).Key;
 
                 switch (choice)
                 {
@@ -105,6 +145,9 @@ namespace RocketAssembler.SubMenus
                         prevCursorPos = arrow.current;
                         arrow.moveArrow(true);
                         break;
+                    //-------------------------------Return to main menu
+                    case ConsoleKey.Q:
+                        return;
                     default:
                         break;
                 }

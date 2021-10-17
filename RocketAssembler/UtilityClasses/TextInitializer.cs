@@ -37,6 +37,7 @@ namespace RocketAssembler.UtilityClasses
 
         //---CONTROLS---
         public static List<string> menuControls = new List<string>();
+        public static List<string> partsListControls = new List<string>();
 
         public static int menuCounter;
 
@@ -51,6 +52,7 @@ namespace RocketAssembler.UtilityClasses
                 menu = "";
                 welcome = "";
                 menuControls.Clear();
+                partsListControls.Clear();
 
                 string JSONtext = reader.ReadToEnd();
                 JObject Jobj = JObject.Parse(JSONtext);
@@ -81,6 +83,11 @@ namespace RocketAssembler.UtilityClasses
                 foreach (var str in Jobj[lang]["menu_controls"])
                 {
                     menuControls.Add(str + "");
+                }
+
+                foreach (var str in Jobj[lang]["parts_list_controls"])
+                {
+                    partsListControls.Add(str + "");
                 }
 
                 type = Jobj[lang]["descriptors"]["type"] + "";

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RocketAssembler.UtilityClasses;
+using RocketAssembler.SubMenus;
 using Newtonsoft.Json;
 
 namespace RocketAssembler
@@ -18,6 +19,8 @@ namespace RocketAssembler
 
             TextInitializer.InitializeText(lang);
             TextInitializer.LoadASCIIart();
+
+            PartsList.loadParts();
 
             Console.CursorVisible = false;
             Console.WindowWidth = 120;
