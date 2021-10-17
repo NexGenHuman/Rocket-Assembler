@@ -47,14 +47,128 @@
   ],
 
   "main_stages": [
+    {
+      "name": "11S59",
+      "empty_mass": 6,
+      "fuel_mass": 94,
+      "thrust": 977,
+      "specific_impulse": 315,
+      "burn_time": 292
+    },
 
+    {
+      "name": "S-IC",
+      "empty_mass": 130,
+      "fuel_mass": 2160,
+      "thrust": 35100,
+      "specific_impulse": 263,
+      "burn_time": 168
+    },
+
+    {
+      "name": "S-II",
+      "empty_mass": 40,
+      "fuel_mass": 456,
+      "thrust": 5141,
+      "specific_impulse": 421,
+      "burn_time": 360
+    },
+
+    {
+      "name": "EPC H158",
+      "empty_mass": 12,
+      "fuel_mass": 158,
+      "thrust": 1015,
+      "specific_impulse": 440,
+      "burn_time": 605
+    },
+
+    {
+      "name": "EPC H173",
+      "empty_mass": 15,
+      "fuel_mass": 170,
+      "thrust": 1175,
+      "specific_impulse": 371,
+      "burn_time": 540
+    }
   ],
 
   "orbital_stages": [
+    {
+      "name": "11S510",
+      "empty_mass": 3,
+      "fuel_mass": 23,
+      "thrust": 294,
+      "specific_impulse": 330,
+      "burn_time": 246
+    },
 
+    {
+      "name": "S-IVB",
+      "empty_mass": 15,
+      "fuel_mass": 108,
+      "thrust": 1033,
+      "specific_impulse": 421,
+      "burn_time": 500
+    },
+
+    {
+      "name": "EPS L9.7",
+      "empty_mass": 1,
+      "fuel_mass": 11,
+      "thrust": 27,
+      "specific_impulse": 324,
+      "burn_time": 1170
+    },
+
+    {
+      "name": "ESC-A",
+      "empty_mass": 5,
+      "fuel_mass": 20,
+      "thrust": 67,
+      "specific_impulse": 446,
+      "burn_time": 945
+    },
+
+    {
+      "name": "FH B5",
+      "empty_mass": 8,
+      "fuel_mass": 144,
+      "thrust": 7900,
+      "specific_impulse": 296,
+      "burn_time": 187
+    }
   ],
 
   "capsules": [
+    {
+      "name": "Dragon",
+      "crew": 4,
+      "design_life": 220
+    },
 
+    {
+      "name": "Soyuz MS",
+      "crew": 3,
+      "design_life": 210
+    },
+
+    {
+      "name": "Orel",
+      "crew": 6,
+      "design_life": 365
+    },
+
+    {
+      "name": "Apollo CSM",
+      "crew": 3,
+      "design_life": 14
+    },
+
+    {
+      "name": "Orion",
+      "crew": 6,
+      "design_life": 21
+    }
   ]
 }

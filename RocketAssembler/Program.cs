@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using RocketAssembler.GraphicalFuncs;
 using System.Threading;
-using RocketAssembler.UtilityFuncs;
+using RocketAssembler.UtilityClasses;
+using RocketAssembler.SubMenus;
 
 namespace RocketAssembler
 {
     class Program
     {
-        public const string directory = @"E:\Repos\RocketAssembler\RocketAssembler";
+        //public const string directory = @"E:\Repos\RocketAssembler\RocketAssembler";
+        //public const string directory = @"C:\Konrad Repos\Rocket-Assembler\RocketAssembler";
+        static public string directory = @"C:\Konrad Repos\NexGenHuman\Rocket-Assembler\RocketAssembler";
 
         static void Main(string[] args)
         {
@@ -19,18 +22,18 @@ namespace RocketAssembler
 
             ProgramSetup.Initialize();
             
-            PresetGraphicDrawer.PresetGraphicDraw(0, ConsoleColor.Yellow);
+            PresetGraphicDrawer.PresetGraphicDraw("disclaimer", ConsoleColor.Yellow);
             //Change time to 10000 after done
             Thread.Sleep(1000);
             Console.Clear();
 
-            PresetGraphicDrawer.PresetGraphicDraw(1, ConsoleColor.Green);
+            PresetGraphicDrawer.PresetGraphicDraw("welcome", ConsoleColor.Green);
             Thread.Sleep(1000);
             Console.Clear();
 
             while(running)
             {
-                PresetGraphicDrawer.PresetGraphicDraw(2, ConsoleColor.Gray);
+                PresetGraphicDrawer.PresetGraphicDraw("menu", ConsoleColor.Gray);
                 PresetGraphicDrawer.WriteControls(TextInitializer.menuControls);
                 //REMEMBER TO PUT CONTROLS AT THE BOTTOM
 
@@ -74,6 +77,8 @@ namespace RocketAssembler
                         //-------------------------------Part list
                         case ConsoleKey.D4:
                             decided = true;
+                            PartsList.loadParts();
+                            PartsList.DrawPartsList();
                             break;
 
                         //-------------------------------Compare parts
@@ -128,7 +133,7 @@ namespace RocketAssembler
             
             Console.Clear();
 
-            PresetGraphicDrawer.PresetGraphicDraw(3, ConsoleColor.Green);
+            PresetGraphicDrawer.PresetGraphicDraw("goodbye", ConsoleColor.Green);
 
             Console.ReadKey();
         }

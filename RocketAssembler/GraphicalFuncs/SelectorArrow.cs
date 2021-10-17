@@ -8,7 +8,7 @@ namespace RocketAssembler.GraphicalFuncs
 {
     class SelectorArrow
     {
-        private string arrow = "->";
+        private string arrow = "-->";
         private Tuple<int, int> prevPos;
         int range;
         public int current = 0;
@@ -24,10 +24,7 @@ namespace RocketAssembler.GraphicalFuncs
 
         public void moveArrow(bool downward)
         {
-            if (downward)
-                reDrawArrow(positionCalc(downward));
-            else
-                reDrawArrow(positionCalc(downward));
+            reDrawArrow(positionCalc(downward));
         }
 
         void reDrawArrow(Tuple<int, int> pos)

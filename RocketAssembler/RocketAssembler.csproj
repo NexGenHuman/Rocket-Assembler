@@ -52,7 +52,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubMenus\PartsList.cs" />
-    <Compile Include="UtilityFuncs\TextInitializer.cs" />
+    <Compile Include="UtilityClasses\Parts.cs" />
+    <Compile Include="UtilityClasses\TextInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RocketAssembler.UtilityFuncs;
+using RocketAssembler.UtilityClasses;
+using RocketAssembler.SubMenus;
 
 namespace RocketAssembler.GraphicalFuncs
 {
@@ -77,31 +78,40 @@ namespace RocketAssembler.GraphicalFuncs
         /// </summary>
         /// <param name="option">An int value indicating which preset is chosen. 0 is disclaimer, 1 is welcome, 2 is menu and 3 is goodbye</param>
         /// <param name="color">Text colour</param>
-        static public void PresetGraphicDraw(int option, ConsoleColor color)
+        static public void PresetGraphicDraw(string option, ConsoleColor color)
         {
             Console.ForegroundColor = color;
             switch(option)
             {
-                case 0:
+                case "disclaimer":
                     WriteCentered(TextInitializer.disclaimer, Console.WindowWidth, 10);
                     break;
-                case 1:
+                case "welcome":
                     WriteCentered(TextInitializer.title, Console.WindowWidth, 7);
                     WriteCentered(TextInitializer.welcome, Console.WindowWidth, 2);
                     break;
-                case 2:
+                case "menu":
                     WritePaddedLeft(TextInitializer.menu, menuPosX, menuPosY);
                     Console.SetCursorPosition(0, 0);
                     WritePaddedLeft(TextInitializer.logo, 50, 4);
                     break;
-                case 3:
+                case "goodbye":
                     WriteCentered(TextInitializer.goodbye, Console.WindowWidth, 5);
                     break;
-                case 4:
+                case "areYouSure":
                     WriteCentered(TextInitializer.areYouSure, Console.WindowWidth, 15);
                     break;
+                case "partsList":
+                    string temp = "";
+                    foreach (var part in PartsList.allParts)
+                    {
+                        temp += part.name + "\n";
+                    }
+
+                    WritePaddedLeft(temp, menuPosX, menuPosY);
+                    break;
                 default:
-                    WriteCentered("Unavailable preset No." + option + " chosen.", Console.WindowWidth, 10);
+                    WriteCentered("Unavailable preset " + option + " chosen.", Console.WindowWidth, 10);
                     break;
             }
             Console.ForegroundColor = ConsoleColor.White;
@@ -111,7 +121,7 @@ namespace RocketAssembler.GraphicalFuncs
         {
             while (true)
             {
-                PresetGraphicDraw(4, ConsoleColor.DarkRed);
+                PresetGraphicDraw("areYouSure", ConsoleColor.DarkRed);
 
                 bool decided = false;
 

@@ -30,7 +30,23 @@
       " S,↓ - Cursor down ",
       " Enter - Select using cursor ",
       " 1-7 - Select using numbers "
-    ]
+    ],
+
+    "descriptors": {
+      "type": "Type",
+      "name": "Name",
+      "empty_mass": "Empty mass",
+      "fuel_mass": "Fuel mass",
+      "thrust": "Thrust",
+      "specific_impulse": "Specific impulse",
+      "burn_time": "Burn time",
+      "crew": "Crew",
+      "design_life": "Design life",
+      "solid_fuel_booster": "Solid fuel booster",
+      "main_stage": "Main stage",
+      "orbital_stage": "Orbital stage",
+      "capsule": "Capsule"
+    }
   },
 
   "pl": {
@@ -64,6 +80,22 @@
       " S,↓ - Kursor w dol ",
       " Enter - Wybierz na pozycji kursora ",
       " 1-7 - Wybierz numerami "
-    ]
+    ],
+
+    "descriptors": {
+      "type": "Typ",
+      "name": "Nazwa",
+      "empty_mass": "Masa pusta",
+      "fuel_mass": "Masa paliwa",
+      "thrust": "Sila ciagu",
+      "specific_impulse": "Impuls wlasciwy",
+      "burn_time": "Czas zaplonu",
+      "crew": "Zaloga",
+      "design_life": "Czas eksploatacji",
+      "solid_fuel_booster": "Dopalacz na paliwo stale",
+      "main_stage": "Stopien glowny",
+      "orbital_stage": "Stopien glowny",
+      "capsule": "Kapsula"
+    }
   }
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RocketAssembler.UtilityFuncs;
+using RocketAssembler.UtilityClasses;
+using Newtonsoft.Json;
 
 namespace RocketAssembler
 {
@@ -13,6 +14,8 @@ namespace RocketAssembler
 
         public static void Initialize()
         {
+            Program.directory = AppDomain.CurrentDomain.BaseDirectory;
+
             TextInitializer.InitializeText(lang);
             TextInitializer.LoadASCIIart();
 
