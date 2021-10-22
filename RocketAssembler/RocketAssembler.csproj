@@ -59,16 +59,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="JsonFiles\Parts.json" />
-    <None Include="JsonFiles\Properties.json" />
-    <None Include="JsonFiles\Text.json" />
+    <None Include="JsonFiles\Parts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="JsonFiles\Properties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="JsonFiles\Text.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="GraphicalFuncs\ASCIIart\goodbye.txt" />
-    <Content Include="GraphicalFuncs\ASCIIart\logo.txt" />
-    <Content Include="GraphicalFuncs\ASCIIart\title.txt" />
+    <Content Include="GraphicalFuncs\ASCIIart\goodbye.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphicalFuncs\ASCIIart\logo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GraphicalFuncs\ASCIIart\title.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Temporary sketches for work.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
