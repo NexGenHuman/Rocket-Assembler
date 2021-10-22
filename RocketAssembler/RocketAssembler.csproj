@@ -69,6 +69,7 @@
     <Content Include="GraphicalFuncs\ASCIIart\goodbye.txt" />
     <Content Include="GraphicalFuncs\ASCIIart\logo.txt" />
     <Content Include="GraphicalFuncs\ASCIIart\title.txt" />
+    <Content Include="Temporary sketches for work.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
