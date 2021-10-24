@@ -19,8 +19,13 @@ namespace RocketAssembler.UtilityClasses
         public static string goodbye;
         public static string logo;
         public static string title;
+        public static string capsuleASCII;
+        public static string orbital_stageASCII;
+        public static string main_stageASCII;
+        public static string solid_fuel_boosterASCII;
+        public static string separator;
 
-        //---DESCRIPTORS---
+        //---WORDS---
         public static string type;
         public static string name;
         public static string empty_mass;
@@ -34,6 +39,7 @@ namespace RocketAssembler.UtilityClasses
         public static string main_stage;
         public static string orbital_stage;
         public static string capsule;
+        public static string optional;
 
         //---CONTROLS---
         public static List<string> menuControls = new List<string>();
@@ -43,7 +49,7 @@ namespace RocketAssembler.UtilityClasses
 
         public static void InitializeText(string lang)
         {
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(RocketAssembler.Program.directory + @"\JsonFiles\Text.json"))
+            using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\JsonFiles\Text.json"))
             {
                 //RESET
                 menuCounter = 0;
@@ -103,6 +109,7 @@ namespace RocketAssembler.UtilityClasses
                 main_stage = Jobj[lang]["descriptors"]["main_stage"] + ""; ;
                 orbital_stage = Jobj[lang]["descriptors"]["orbital_stage"] + ""; ;
                 capsule = Jobj[lang]["descriptors"]["capsule"] + ""; ;
+                optional = Jobj[lang]["descriptors"]["optional"] + ""; ;
 
                 reader.Close();
             }
@@ -112,19 +119,44 @@ namespace RocketAssembler.UtilityClasses
         {
             try
             {
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(RocketAssembler.Program.directory + @"\GraphicalFuncs\ASCIIart\goodbye.txt"))
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\goodbye.txt"))
                 {
                     goodbye = reader.ReadToEnd();
                     reader.Close();
                 }
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(RocketAssembler.Program.directory + @"\GraphicalFuncs\ASCIIart\logo.txt"))
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\logo.txt"))
                 {
                     logo = reader.ReadToEnd();
                     reader.Close();
                 }
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(RocketAssembler.Program.directory + @"\GraphicalFuncs\ASCIIart\title.txt"))
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\title.txt"))
                 {
                     title = reader.ReadToEnd();
+                    reader.Close();
+                }
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\capsule.txt"))
+                {
+                    capsuleASCII = reader.ReadToEnd();
+                    reader.Close();
+                }
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\orbital_stage.txt"))
+                {
+                    orbital_stageASCII = reader.ReadToEnd();
+                    reader.Close();
+                }
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\main_stage.txt"))
+                {
+                    main_stageASCII = reader.ReadToEnd();
+                    reader.Close();
+                }
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\solid_fuel_booster.txt"))
+                {
+                    solid_fuel_boosterASCII = reader.ReadToEnd();
+                    reader.Close();
+                }
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(Program.directory + @"\GraphicalFuncs\ASCIIart\separator.txt"))
+                {
+                    separator = reader.ReadToEnd();
                     reader.Close();
                 }
             }

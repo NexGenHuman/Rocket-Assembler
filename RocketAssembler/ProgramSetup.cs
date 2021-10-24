@@ -13,6 +13,10 @@ namespace RocketAssembler
     {
         public static string lang = "eng";
 
+        public static ConsoleColor positive = ConsoleColor.Green;
+        public static ConsoleColor negative = ConsoleColor.Red;
+        public static ConsoleColor optional = ConsoleColor.DarkGray;
+
         public static void Initialize()
         {
             Program.directory = AppDomain.CurrentDomain.BaseDirectory;

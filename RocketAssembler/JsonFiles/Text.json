@@ -51,7 +51,8 @@
       "solid_fuel_booster": "Solid fuel booster",
       "main_stage": "Main stage",
       "orbital_stage": "Orbital stage",
-      "capsule": "Capsule"
+      "capsule": "Capsule",
+      "optional": "Optional"
     }
   },
 
@@ -107,7 +108,8 @@
       "solid_fuel_booster": "Dopalacz na paliwo stale",
       "main_stage": "Stopien glowny",
       "orbital_stage": "Stopien orbitalny",
-      "capsule": "Kapsula"
+      "capsule": "Kapsula",
+      "optional": "Opcjonalne"
     }
   }
 }

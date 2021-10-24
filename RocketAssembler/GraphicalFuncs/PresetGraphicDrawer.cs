@@ -110,6 +110,11 @@ namespace RocketAssembler.GraphicalFuncs
 
                     WritePaddedLeft(temp, menuPosX, menuPosY);
                     break;
+                case "rocketBuild":
+                    Console.Clear();
+                    DrawRocket(new Tuple<int, int>(0, 0), false, false, false, false);
+                    Console.ReadKey();
+                    break;
                 default:
                     WriteCentered("Unavailable preset " + option + " chosen.", Console.WindowWidth, 10);
                     break;
@@ -170,6 +175,75 @@ namespace RocketAssembler.GraphicalFuncs
             }
 
             Console.SetCursorPosition(0, 0);
+        }
+
+        static int getOffset(int space, int content)
+        {
+            return (space - content) / 2;
+        }
+
+        static public void DrawRocket(Tuple<int, int> position, bool capsule, bool orbital, bool main, bool sfb)
+        {
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.separator, position.Item1, position.Item2);
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.capsule.ToUpper(), position.Item1 + getOffset(TextInitializer.separator.Length, TextInitializer.capsule.Length), position.Item2);
+
+            if (capsule)
+                Console.ForegroundColor = ProgramSetup.positive;
+            else
+                Console.ForegroundColor = ProgramSetup.negative;
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.capsuleASCII, position.Item1 + 11, position.Item2 + 1);
+            Console.ForegroundColor = ConsoleColor.White;
+
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.separator, position.Item1, position.Item2 + 3);
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.orbital_stage.ToUpper(), position.Item1 + getOffset(TextInitializer.separator.Length, TextInitializer.orbital_stage.Length), position.Item2 + 3);
+
+            if (orbital)
+                Console.ForegroundColor = ProgramSetup.positive;
+            else
+                Console.ForegroundColor = ProgramSetup.negative;
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.orbital_stageASCII, position.Item1 + 10, position.Item2 + 4);
+            Console.ForegroundColor = ConsoleColor.White;
+
+
+            if (sfb)
+                Console.ForegroundColor = ProgramSetup.positive;
+            else
+                Console.ForegroundColor = ProgramSetup.optional;
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.solid_fuel_boosterASCII, position.Item1 + 7, position.Item2 + 9);
+            Console.ForegroundColor = ConsoleColor.White;
+
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.separator, position.Item1, position.Item2 + 7);
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.main_stage.ToUpper(), position.Item1 + getOffset(TextInitializer.separator.Length, TextInitializer.main_stage.Length), position.Item2 + 7);
+            if (main)
+                Console.ForegroundColor = ProgramSetup.positive;
+            else
+                Console.ForegroundColor = ProgramSetup.negative;
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.main_stageASCII, position.Item1 + 10, position.Item2 + 8);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft("▲\n|", position.Item1 + 7, position.Item2 + 17);
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft("▲\n|", position.Item1 + 18, position.Item2 + 17);
+
+            Console.SetCursorPosition(0, 0);
+            WritePaddedLeft(TextInitializer.solid_fuel_booster.ToUpper(), position.Item1 + getOffset(TextInitializer.separator.Length, TextInitializer.solid_fuel_booster.Length), position.Item2 + 19);
+            WritePaddedLeft("("+TextInitializer.optional.ToUpper()+")", position.Item1 + getOffset(TextInitializer.separator.Length, TextInitializer.optional.Length+2), 0);
         }
     }
 }

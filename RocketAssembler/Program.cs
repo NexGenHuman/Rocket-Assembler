@@ -62,6 +62,7 @@ namespace RocketAssembler
                         //-------------------------------Build a rocket
                         case ConsoleKey.D1:
                             decided = true;
+                            PresetGraphicDrawer.PresetGraphicDraw("rocketBuild", ConsoleColor.White);
                             break;
 
                         //-------------------------------Rocket list
