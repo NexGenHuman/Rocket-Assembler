@@ -33,7 +33,7 @@ namespace RocketAssembler.SubMenus
                 allParts.Add(part);
         }
 
-        static string partDescription(Part part)
+        public static string partDescription(Part part)
         {
             string returnString = TextInitializer.name + ": " + part.name + "\n" + TextInitializer.type + ": ";
 

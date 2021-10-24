@@ -111,8 +111,7 @@ namespace RocketAssembler.GraphicalFuncs
                     WritePaddedLeft(temp, menuPosX, menuPosY);
                     break;
                 case "rocketBuild":
-                    Console.Clear();
-                    DrawRocket(new Tuple<int, int>(0, 0), false, false, false, false);
+                    BuildRocket.writeBuildRocket();
                     Console.ReadKey();
                     break;
                 default:
@@ -195,7 +194,7 @@ namespace RocketAssembler.GraphicalFuncs
                 Console.ForegroundColor = ProgramSetup.negative;
 
             Console.SetCursorPosition(0, 0);
-            WritePaddedLeft(TextInitializer.capsuleASCII, position.Item1 + 11, position.Item2 + 1);
+            WritePaddedLeft(TextInitializer.capsuleASCII, position.Item1 + 9, position.Item2 + 1);
             Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -210,7 +209,7 @@ namespace RocketAssembler.GraphicalFuncs
                 Console.ForegroundColor = ProgramSetup.negative;
 
             Console.SetCursorPosition(0, 0);
-            WritePaddedLeft(TextInitializer.orbital_stageASCII, position.Item1 + 10, position.Item2 + 4);
+            WritePaddedLeft(TextInitializer.orbital_stageASCII, position.Item1 + 8, position.Item2 + 4);
             Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -220,7 +219,7 @@ namespace RocketAssembler.GraphicalFuncs
                 Console.ForegroundColor = ProgramSetup.optional;
 
             Console.SetCursorPosition(0, 0);
-            WritePaddedLeft(TextInitializer.solid_fuel_boosterASCII, position.Item1 + 7, position.Item2 + 9);
+            WritePaddedLeft(TextInitializer.solid_fuel_boosterASCII, position.Item1 + 5, position.Item2 + 9);
             Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -233,13 +232,13 @@ namespace RocketAssembler.GraphicalFuncs
             else
                 Console.ForegroundColor = ProgramSetup.negative;
             Console.SetCursorPosition(0, 0);
-            WritePaddedLeft(TextInitializer.main_stageASCII, position.Item1 + 10, position.Item2 + 8);
+            WritePaddedLeft(TextInitializer.main_stageASCII, position.Item1 + 8, position.Item2 + 8);
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.SetCursorPosition(0, 0);
-            WritePaddedLeft("▲\n|", position.Item1 + 7, position.Item2 + 17);
+            WritePaddedLeft("▲\n|", position.Item1 + 5, position.Item2 + 17);
             Console.SetCursorPosition(0, 0);
-            WritePaddedLeft("▲\n|", position.Item1 + 18, position.Item2 + 17);
+            WritePaddedLeft("▲\n|", position.Item1 + 16, position.Item2 + 17);
 
             Console.SetCursorPosition(0, 0);
             WritePaddedLeft(TextInitializer.solid_fuel_booster.ToUpper(), position.Item1 + getOffset(TextInitializer.separator.Length, TextInitializer.solid_fuel_booster.Length), position.Item2 + 19);
