@@ -112,7 +112,6 @@ namespace RocketAssembler.GraphicalFuncs
                     break;
                 case "rocketBuild":
                     BuildRocket.writeBuildRocket();
-                    Console.ReadKey();
                     break;
                 default:
                     WriteCentered("Unavailable preset " + option + " chosen.", Console.WindowWidth, 10);

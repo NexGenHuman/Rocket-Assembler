@@ -16,6 +16,8 @@ namespace RocketAssembler.SubMenus
         static List<Main_Stage> main_stages = new List<Main_Stage>();
         static List<Solid_Fuel_Booster> solid_fuel_boosters = new List<Solid_Fuel_Booster>();
 
+        static int partListPadding = 14;
+
         static string typeSeparator = "--------------------------------------";
 
         static Parts parts;
@@ -42,28 +44,28 @@ namespace RocketAssembler.SubMenus
             switch(_type)
             {
                 case "capsule":
-                    header += "(Q)<< " + TextInitializer.capsule + " >>(E)\n";
+                    header += "(A)<< " + TextInitializer.capsule + " >>(D)\n";
                     header += typeSeparator;
 
                     foreach (Capsule c in capsules)
                         content += c.name + "\n";
                     break;
                 case "orbital_stage":
-                    header += "(Q)<< " + TextInitializer.orbital_stage + " >>(E)\n";
+                    header += "(A)<< " + TextInitializer.orbital_stage + " >>(D)\n";
                     header += typeSeparator;
 
                     foreach (Orbital_Stage os in orbital_stages)
                         content += os.name + "\n";
                     break;
                 case "main_stage":
-                    header += "(Q)<< " + TextInitializer.main_stage + " >>(E)\n";
+                    header += "(A)<< " + TextInitializer.main_stage + " >>(D)\n";
                     header += typeSeparator;
 
                     foreach (Main_Stage ms in main_stages)
                         content += ms.name + "\n";
                     break;
                 case "sfb":
-                    header += "(Q)<< " + TextInitializer.solid_fuel_booster + " >>(E)\n";
+                    header += "(A)<< " + TextInitializer.solid_fuel_booster + " >>(D)\n";
                     header += typeSeparator;
 
                     foreach (Solid_Fuel_Booster sfb in solid_fuel_boosters)
@@ -74,19 +76,154 @@ namespace RocketAssembler.SubMenus
             }
 
             Console.SetCursorPosition(0, 0);
-            PresetGraphicDrawer.WriteCentered(header, typeSeparator.Length + 14, 14);
+            PresetGraphicDrawer.WriteCentered(header, typeSeparator.Length + 14, partListPadding);
             PresetGraphicDrawer.WritePaddedLeft(content, 14, 1);
+        }
+
+        static void clearSelection(string _type)
+        {
+            int lineCounter = 3;
+            switch(_type)
+            {
+                case "capsule":
+                    lineCounter += capsules.Count;
+                    for(int i = 0; i < lineCounter; i++)
+                    {
+                        Console.SetCursorPosition(0, partListPadding + i);
+                        for(int j = 0; j < typeSeparator.Length + 14; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    break;
+                case "orbital_stage":
+                    lineCounter += orbital_stages.Count;
+                    for (int i = 0; i < lineCounter; i++)
+                    {
+                        Console.SetCursorPosition(0, partListPadding + i);
+                        for (int j = 0; j < typeSeparator.Length + 14; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    break;
+                case "main_stage":
+                    lineCounter += main_stages.Count;
+                    for (int i = 0; i < lineCounter; i++)
+                    {
+                        Console.SetCursorPosition(0, partListPadding + i);
+                        for (int j = 0; j < typeSeparator.Length + 14; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    break;
+                case "sfb":
+                    lineCounter += solid_fuel_boosters.Count;
+                    for (int i = 0; i < lineCounter; i++)
+                    {
+                        Console.SetCursorPosition(0, partListPadding + i);
+                        for (int j = 0; j < typeSeparator.Length + 14; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        static int getTypeLength(string _type)
+        {
+            switch (_type)
+            {
+                case "capsule":
+                    return capsules.Count;
+                case "orbital_stage":
+                    return orbital_stages.Count;
+                case "main_stage":
+                    return main_stages.Count;
+                case "sfb":
+                    return solid_fuel_boosters.Count;
+                default:
+                    return 0;
+            }
         }
 
         static public void writeBuildRocket()
         {
             Console.Clear();
             loadParts();
+            string[] selections = new string[]
+            {
+                "capsule", "orbital_stage", "main_stage", "sfb"
+            };
+
+            bool capsule = false;
+            bool orbital = false;
+            bool main = false;
+            bool sfb = false;
+
+            Tuple<int, int> arrowStartPos = new Tuple<int, int>(10, 17);
+
+            bool running = true;
 
             writeSelection("capsule");
             Console.SetCursorPosition(0, 0);
+
+            SelectorArrow arrow = new SelectorArrow(arrowStartPos, capsules.Count, 1);
+
             PresetGraphicDrawer.DrawRocket(new Tuple<int, int>(84, 7), false, false, false, false);
             Console.SetCursorPosition(0, 0);
+
+            int chosenPartType = 0;
+
+            while (running)
+            {
+                bool decided = false;
+
+                while(!decided)
+                {
+                    ConsoleKey choice = Console.ReadKey(true).Key;
+
+                    switch(choice)
+                    {
+                        case ConsoleKey.A:
+                        case ConsoleKey.LeftArrow:
+                            decided = true;
+                            clearSelection(selections[chosenPartType]);
+                            chosenPartType--;
+                            if (chosenPartType < 0)
+                                chosenPartType = 3;
+                            writeSelection(selections[chosenPartType]);
+                            arrow = new SelectorArrow(arrowStartPos, getTypeLength(selections[chosenPartType]), 1);
+                            break;
+                        case ConsoleKey.D:
+                        case ConsoleKey.RightArrow:
+                            decided = true;
+                            clearSelection(selections[chosenPartType]);
+                            chosenPartType++;
+                            if (chosenPartType > 3)
+                                chosenPartType = 0;
+                            writeSelection(selections[chosenPartType]);
+                            arrow = new SelectorArrow(arrowStartPos, getTypeLength(selections[chosenPartType]), 1);
+                            break;
+                        case ConsoleKey.S:
+                        case ConsoleKey.DownArrow:
+                            arrow.moveArrow(true);
+                            break;
+                        case ConsoleKey.W:
+                        case ConsoleKey.UpArrow:
+                            arrow.moveArrow(false);
+                            break;
+                        case ConsoleKey.Q:
+                            return;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }
