@@ -40,6 +40,7 @@ namespace RocketAssembler.UtilityClasses
         public static string orbital_stage;
         public static string capsule;
         public static string optional;
+        public static string none;
 
         //---CONTROLS---
         public static List<string> menuControls = new List<string>();
@@ -106,10 +107,11 @@ namespace RocketAssembler.UtilityClasses
                 crew = Jobj[lang]["descriptors"]["crew"] + "";
                 design_life = Jobj[lang]["descriptors"]["design_life"] + "";
                 solid_fuel_booster = Jobj[lang]["descriptors"]["solid_fuel_booster"] + "";
-                main_stage = Jobj[lang]["descriptors"]["main_stage"] + ""; ;
-                orbital_stage = Jobj[lang]["descriptors"]["orbital_stage"] + ""; ;
-                capsule = Jobj[lang]["descriptors"]["capsule"] + ""; ;
-                optional = Jobj[lang]["descriptors"]["optional"] + ""; ;
+                main_stage = Jobj[lang]["descriptors"]["main_stage"] + "";
+                orbital_stage = Jobj[lang]["descriptors"]["orbital_stage"] + "";
+                capsule = Jobj[lang]["descriptors"]["capsule"] + "";
+                optional = Jobj[lang]["descriptors"]["optional"] + "";
+                none = Jobj[lang]["descriptors"]["none"] + "";
 
                 reader.Close();
             }

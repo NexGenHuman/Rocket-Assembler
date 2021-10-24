@@ -34,6 +34,7 @@ namespace RocketAssembler.SubMenus
             orbital_stages = parts.orbital_stage;
             main_stages = parts.main_stage;
             solid_fuel_boosters = parts.solid_fuel_booster;
+            solid_fuel_boosters.Add(null);
         }
 
         static void writeSelection(string _type)
@@ -69,7 +70,12 @@ namespace RocketAssembler.SubMenus
                     header += typeSeparator;
 
                     foreach (Solid_Fuel_Booster sfb in solid_fuel_boosters)
-                        content += sfb.name + "\n";
+                    {
+                        if (sfb != null)
+                            content += sfb.name + "\n";
+                        else
+                            content += TextInitializer.none + "\n";
+                    }
                     break;
                 default:
                     break;
@@ -165,6 +171,11 @@ namespace RocketAssembler.SubMenus
             bool main = false;
             bool sfb = false;
 
+            Capsule chosenC = null;
+            Orbital_Stage chosenOS = null;
+            Main_Stage chosenMS = null;
+            Solid_Fuel_Booster chosenSFB = null;
+
             Tuple<int, int> arrowStartPos = new Tuple<int, int>(10, 17);
 
             bool running = true;
@@ -189,6 +200,36 @@ namespace RocketAssembler.SubMenus
 
                     switch(choice)
                     {
+                        case ConsoleKey.Enter:
+                            decided = true;
+                            switch(chosenPartType)
+                            {
+                                case 0:
+                                    chosenC = capsules[arrow.current];
+                                    capsule = true;
+                                    break;
+                                case 1:
+                                    chosenOS = orbital_stages[arrow.current];
+                                    orbital = true;
+                                    break;
+                                case 2:
+                                    chosenMS = main_stages[arrow.current];
+                                    main = true;
+                                    break;
+                                case 3:
+                                    chosenSFB = solid_fuel_boosters[arrow.current];
+                                    if (chosenSFB == null)
+                                        sfb = false;
+                                    else
+                                        sfb = true;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            PresetGraphicDrawer.DrawRocket(new Tuple<int, int>(84, 7), capsule, orbital, main, sfb);
+                            Console.SetCursorPosition(0, 0);
+                            break;
+
                         case ConsoleKey.A:
                         case ConsoleKey.LeftArrow:
                             decided = true;
@@ -199,6 +240,7 @@ namespace RocketAssembler.SubMenus
                             writeSelection(selections[chosenPartType]);
                             arrow = new SelectorArrow(arrowStartPos, getTypeLength(selections[chosenPartType]), 1);
                             break;
+
                         case ConsoleKey.D:
                         case ConsoleKey.RightArrow:
                             decided = true;
@@ -209,16 +251,20 @@ namespace RocketAssembler.SubMenus
                             writeSelection(selections[chosenPartType]);
                             arrow = new SelectorArrow(arrowStartPos, getTypeLength(selections[chosenPartType]), 1);
                             break;
+
                         case ConsoleKey.S:
                         case ConsoleKey.DownArrow:
                             arrow.moveArrow(true);
                             break;
+
                         case ConsoleKey.W:
                         case ConsoleKey.UpArrow:
                             arrow.moveArrow(false);
                             break;
+
                         case ConsoleKey.Q:
                             return;
+
                         default:
                             break;
                     }

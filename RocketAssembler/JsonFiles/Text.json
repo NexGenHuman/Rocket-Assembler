@@ -52,7 +52,8 @@
       "main_stage": "Main stage",
       "orbital_stage": "Orbital stage",
       "capsule": "Capsule",
-      "optional": "Optional"
+      "optional": "Optional",
+      "none": "None"
     }
   },
 
@@ -109,7 +110,8 @@
       "main_stage": "Stopien glowny",
       "orbital_stage": "Stopien orbitalny",
       "capsule": "Kapsula",
-      "optional": "Opcjonalne"
+      "optional": "Opcjonalne",
+      "none": "Pusto"
     }
   }
 }
