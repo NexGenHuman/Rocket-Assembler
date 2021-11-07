@@ -16,6 +16,11 @@ namespace RocketAssembler.SubMenus
         static List<Main_Stage> main_stages = new List<Main_Stage>();
         static List<Solid_Fuel_Booster> solid_fuel_boosters = new List<Solid_Fuel_Booster>();
 
+        static Capsule chosenC = null;
+        static Orbital_Stage chosenOS = null;
+        static Main_Stage chosenMS = null;
+        static Solid_Fuel_Booster chosenSFB = null;
+
         static int partListPadding = 14;
 
         static string typeSeparator = "--------------------------------------";
@@ -171,11 +176,6 @@ namespace RocketAssembler.SubMenus
             bool main = false;
             bool sfb = false;
 
-            Capsule chosenC = null;
-            Orbital_Stage chosenOS = null;
-            Main_Stage chosenMS = null;
-            Solid_Fuel_Booster chosenSFB = null;
-
             Tuple<int, int> arrowStartPos = new Tuple<int, int>(10, 17);
 
             bool running = true;
@@ -264,6 +264,14 @@ namespace RocketAssembler.SubMenus
 
                         case ConsoleKey.Q:
                             return;
+                        
+                        case ConsoleKey.Spacebar:
+                            if (chosenC != null && chosenOS != null && chosenMS != null)
+                            {
+                                RocketList.rockets.Add(new Rocket("Rocket" + RocketList.rockets.Count, chosenC, chosenOS, chosenMS, chosenSFB));
+                                return;
+                            }
+                            break;
 
                         default:
                             break;
