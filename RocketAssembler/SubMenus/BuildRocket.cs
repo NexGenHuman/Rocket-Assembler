@@ -16,11 +16,6 @@ namespace RocketAssembler.SubMenus
         static List<Main_Stage> main_stages = new List<Main_Stage>();
         static List<Solid_Fuel_Booster> solid_fuel_boosters = new List<Solid_Fuel_Booster>();
 
-        static Capsule chosenC = null;
-        static Orbital_Stage chosenOS = null;
-        static Main_Stage chosenMS = null;
-        static Solid_Fuel_Booster chosenSFB = null;
-
         static int partListPadding = 14;
 
         static string typeSeparator = "--------------------------------------";
@@ -47,7 +42,7 @@ namespace RocketAssembler.SubMenus
             string header = "";
             string content = "";
 
-            switch(_type)
+            switch (_type)
             {
                 case "capsule":
                     header += "(A)<< " + TextInitializer.capsule + " >>(D)\n";
@@ -94,14 +89,14 @@ namespace RocketAssembler.SubMenus
         static void clearSelection(string _type)
         {
             int lineCounter = 3;
-            switch(_type)
+            switch (_type)
             {
                 case "capsule":
                     lineCounter += capsules.Count;
-                    for(int i = 0; i < lineCounter; i++)
+                    for (int i = 0; i < lineCounter; i++)
                     {
                         Console.SetCursorPosition(0, partListPadding + i);
-                        for(int j = 0; j < typeSeparator.Length + 14; j++)
+                        for (int j = 0; j < typeSeparator.Length + 14; j++)
                         {
                             Console.Write(" ");
                         }
@@ -164,6 +159,8 @@ namespace RocketAssembler.SubMenus
 
         static public void writeBuildRocket()
         {
+            Rocket rocketToReturn = new Rocket("New Rocket " + RocketList.rockets.Count, null, null, null, null);
+
             Console.Clear();
             loadParts();
             string[] selections = new string[]
@@ -190,35 +187,80 @@ namespace RocketAssembler.SubMenus
 
             int chosenPartType = 0;
 
+            int prevWidth = 0, prevHeight = 0;
+            int prevWidthPart = 0, prevHeightPart = 0;
+
+            Tuple<int, int> rocketListPos = new Tuple<int, int>(50, 2);
+            Tuple<int, int> partPos = new Tuple<int, int>(13, 4);
+
+            PresetGraphicDrawer.WritePaddedLeft(PartsList.partDescription(capsules[0]), partPos.Item1, partPos.Item2);
+            Console.SetCursorPosition(0, 0);
+
             while (running)
             {
                 bool decided = false;
 
-                while(!decided)
+                Console.SetCursorPosition(rocketListPos.Item1, rocketListPos.Item2);
+                for (int i = 0; i < prevHeight; i++)
+                {
+                    for (int j = 0; j < prevWidth; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.SetCursorPosition(rocketListPos.Item1, rocketListPos.Item2 + i);
+                }
+                prevHeight = 1;
+                prevWidth = 0;
+
+                string toWrite = RocketList.writeAllParts(rocketToReturn);
+
+                int tempCounter = 0;
+
+                foreach (char ch in toWrite)
+                {
+                    if (ch != '\n')
+                        tempCounter++;
+                    else
+                    {
+                        prevHeight++;
+                        if (tempCounter > prevWidth)
+                            prevWidth = tempCounter;
+                        tempCounter = 0;
+                    }
+                }
+                prevHeight++;
+
+                if (tempCounter > prevWidth)
+                    prevWidth = tempCounter;
+
+                Console.SetCursorPosition(0, 0);
+                PresetGraphicDrawer.WritePaddedLeft(toWrite, rocketListPos.Item1, rocketListPos.Item2);
+
+                while (!decided)
                 {
                     ConsoleKey choice = Console.ReadKey(true).Key;
 
-                    switch(choice)
+                    switch (choice)
                     {
                         case ConsoleKey.Enter:
                             decided = true;
-                            switch(chosenPartType)
+                            switch (chosenPartType)
                             {
                                 case 0:
-                                    chosenC = capsules[arrow.current];
+                                    rocketToReturn.capsule = capsules[arrow.current];
                                     capsule = true;
                                     break;
                                 case 1:
-                                    chosenOS = orbital_stages[arrow.current];
+                                    rocketToReturn.orbital_stage = orbital_stages[arrow.current];
                                     orbital = true;
                                     break;
                                 case 2:
-                                    chosenMS = main_stages[arrow.current];
+                                    rocketToReturn.main_stage = main_stages[arrow.current];
                                     main = true;
                                     break;
                                 case 3:
-                                    chosenSFB = solid_fuel_boosters[arrow.current];
-                                    if (chosenSFB == null)
+                                    rocketToReturn.solid_fuel_booster = solid_fuel_boosters[arrow.current];
+                                    if (rocketToReturn.solid_fuel_booster == null)
                                         sfb = false;
                                     else
                                         sfb = true;
@@ -264,11 +306,11 @@ namespace RocketAssembler.SubMenus
 
                         case ConsoleKey.Q:
                             return;
-                        
+
                         case ConsoleKey.Spacebar:
-                            if (chosenC != null && chosenOS != null && chosenMS != null)
+                            if (capsule && orbital && main)
                             {
-                                RocketList.rockets.Add(new Rocket("Rocket" + RocketList.rockets.Count, chosenC, chosenOS, chosenMS, chosenSFB));
+                                RocketList.rockets.Add(rocketToReturn);
                                 return;
                             }
                             break;
@@ -276,6 +318,66 @@ namespace RocketAssembler.SubMenus
                         default:
                             break;
                     }
+
+                    //Part description
+
+                    Console.SetCursorPosition(partPos.Item1, partPos.Item2);
+                    for (int i = 0; i < prevHeightPart; i++)
+                    {
+                        for (int j = 0; j < prevWidthPart; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                        Console.SetCursorPosition(partPos.Item1, partPos.Item2 + i);
+                    }
+
+                    prevHeightPart = 1;
+                    prevWidthPart = 0;
+
+                    Console.SetCursorPosition(0, 0);
+
+                    string toWritePart = "";
+
+                    switch (chosenPartType)
+                    {
+                        case 0:
+                            toWritePart = PartsList.partDescription(capsules[arrow.current]);
+                            break;
+                        case 1:
+                            toWritePart = PartsList.partDescription(orbital_stages[arrow.current]);
+                            break;
+                        case 2:
+                            toWritePart = PartsList.partDescription(main_stages[arrow.current]);
+                            break;
+                        case 3:
+                            if (solid_fuel_boosters[arrow.current] != null)
+                                toWritePart = PartsList.partDescription(solid_fuel_boosters[arrow.current]);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    int tempCounterPart = 0;
+
+                    foreach (char ch in toWritePart)
+                    {
+                        if (ch != '\n')
+                            tempCounterPart++;
+                        else
+                        {
+                            prevHeightPart++;
+                            if (tempCounterPart > prevWidthPart)
+                                prevWidthPart = tempCounterPart;
+                            tempCounterPart = 0;
+                        }
+                    }
+                    prevHeightPart++;
+
+                    if (tempCounterPart > prevWidthPart)
+                        prevWidthPart = tempCounterPart;
+
+
+                    PresetGraphicDrawer.WritePaddedLeft(toWritePart, partPos.Item1, partPos.Item2);
                 }
             }
         }

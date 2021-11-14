@@ -102,13 +102,20 @@ namespace RocketAssembler.GraphicalFuncs
                     WriteCentered(TextInitializer.areYouSure, Console.WindowWidth, 15);
                     break;
                 case "partsList":
-                    string temp = "";
+                    string partTemp = "";
                     foreach (var part in PartsList.allParts)
                     {
-                        temp += part.name + "\n";
+                        partTemp += part.name + "\n";
                     }
-
-                    WritePaddedLeft(temp, menuPosX, menuPosY);
+                    WritePaddedLeft(partTemp, menuPosX, menuPosY);
+                    break;
+                case "rocketsList":
+                    string rocketTemp = "";
+                    foreach (var rocket in RocketList.rockets)
+                    {
+                        rocketTemp += rocket.name + "\n";
+                    }
+                    WritePaddedLeft(rocketTemp, menuPosX, menuPosY);
                     break;
                 case "rocketBuild":
                     BuildRocket.writeBuildRocket();

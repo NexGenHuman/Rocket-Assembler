@@ -68,6 +68,7 @@ namespace RocketAssembler
                         //-------------------------------Rocket list
                         case ConsoleKey.D2:
                             decided = true;
+                            RocketList.writeRocketList();
                             break;
 
                         //-------------------------------Compare rockets
@@ -84,6 +85,7 @@ namespace RocketAssembler
                         //-------------------------------Compare parts
                         case ConsoleKey.D5:
                             decided = true;
+                            CompareParts.drawCompareParts();
                             break;
 
                         //-------------------------------Change language

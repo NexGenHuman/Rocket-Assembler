@@ -37,7 +37,7 @@ namespace RocketAssembler.SubMenus
         {
             string returnString = TextInitializer.name + ": " + part.name + "\n" + TextInitializer.type + ": ";
 
-            if(part is Propolsion)
+            if (part is Propolsion)
             {
                 if (part is Solid_Fuel_Booster)
                     returnString += TextInitializer.solid_fuel_booster + "\n";
@@ -51,7 +51,7 @@ namespace RocketAssembler.SubMenus
                 returnString += TextInitializer.fuel_mass + ": " + propolsion.fuel_mass + "t\n";
                 returnString += TextInitializer.thrust + ": " + propolsion.thrust + "kN\n";
                 returnString += TextInitializer.specific_impulse + ": " + propolsion.specific_impulse + "s\n";
-                returnString += TextInitializer.burn_time + ": " + propolsion.burn_time + "s";
+                returnString += TextInitializer.burn_time + ": " + propolsion.burn_time + "s\n";
             }
             else
             {
@@ -86,10 +86,10 @@ namespace RocketAssembler.SubMenus
 
             while (running)
             {
-                if(prevCursorPos != arrow.current)
+                if (prevCursorPos != arrow.current)
                 {
                     Console.SetCursorPosition(partPos.Item1, partPos.Item2);
-                    for(int i = 0; i < prevHeight; i++)
+                    for (int i = 0; i < prevHeight; i++)
                     {
                         for (int j = 0; j < prevWidth; j++)
                         {
@@ -106,7 +106,7 @@ namespace RocketAssembler.SubMenus
 
                     int tempCounter = 0;
 
-                    foreach(char ch in toWrite)
+                    foreach (char ch in toWrite)
                     {
                         if (ch != '\n')
                             tempCounter++;
