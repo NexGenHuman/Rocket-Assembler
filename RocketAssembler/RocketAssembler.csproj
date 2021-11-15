@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubMenus\BuildRocket.cs" />
     <Compile Include="SubMenus\CompareParts.cs" />
+    <Compile Include="SubMenus\CompareRockets.cs" />
     <Compile Include="SubMenus\PartsList.cs" />
     <Compile Include="SubMenus\RocketList.cs" />
     <Compile Include="UtilityClasses\Parts.cs" />
@@ -68,7 +69,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="JsonFiles\Text.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -98,7 +99,6 @@
     <Content Include="GraphicalFuncs\ASCIIart\title.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Temporary sketches for work.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,6 +35,8 @@ namespace RocketAssembler.SubMenus
 
         public static string partDescription(Part part)
         {
+            if (part == null)
+                return "";
             string returnString = TextInitializer.name + ": " + part.name + "\n" + TextInitializer.type + ": ";
 
             if (part is Propolsion)

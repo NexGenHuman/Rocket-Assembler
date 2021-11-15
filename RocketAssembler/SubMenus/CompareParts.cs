@@ -118,23 +118,74 @@ namespace RocketAssembler.SubMenus
         {
             Console.Clear();
 
-            Tuple<int, int> listPos1 = new Tuple<int, int>(10, 3);
-            Tuple<int, int> listPos2 = new Tuple<int, int>(80, 3);
+            Tuple<int, int> listPos1 = new Tuple<int, int>(5, 3);
+            Tuple<int, int> listPos2 = new Tuple<int, int>(90, 3);
 
             bool running = true;
 
             SelectorArrow arrow1 = new SelectorArrow(listPos1, PartsList.allParts.Count, 1);
             SelectorArrow arrow2 = new SelectorArrow(listPos2, PartsList.allParts.Count, 1);
 
-            while(running)
+            string partTemp = "";
+            foreach (var part in PartsList.allParts)
             {
-                
+                partTemp += part.name + "\n";
             }
 
-            printComparedPart(PartsList.allParts[1], PartsList.allParts[4], 10, 5);
-            printComparedPart(PartsList.allParts[4], PartsList.allParts[1], 30, 5);
+            Console.SetCursorPosition(0, 0);
+            PresetGraphicDrawer.WritePaddedLeft(partTemp, listPos1.Item1 + 4, listPos1.Item2);
+            Console.SetCursorPosition(0, 0);
+            PresetGraphicDrawer.WritePaddedLeft(partTemp, listPos2.Item1 + 4, listPos2.Item2);
 
-            Console.ReadKey();
+            PresetGraphicDrawer.WriteControls(TextInitializer.partCompareControls);
+
+            while (running)
+            {
+                for(int i = 0; i < Console.WindowHeight - 1; i++)
+                {
+                    Console.SetCursorPosition(25, i);
+                    Console.Write("                                                                 ");
+                }
+
+                Console.SetCursorPosition(0, 0);
+                if (PartsList.allParts[arrow1.current].GetType() == PartsList.allParts[arrow2.current].GetType())
+                {
+                    printComparedPart(PartsList.allParts[arrow1.current], PartsList.allParts[arrow2.current], 25, 5);
+                    printComparedPart(PartsList.allParts[arrow2.current], PartsList.allParts[arrow1.current], 60, 5);
+                }
+                else
+                    PresetGraphicDrawer.WriteCentered(TextInitializer.different_types, Console.WindowWidth, 5);
+
+
+                ConsoleKey choice = Console.ReadKey(true).Key;
+
+                switch (choice)
+                {
+                    //-------------------------------Move the arrow up on right
+                    case ConsoleKey.UpArrow:
+                        arrow2.moveArrow(false);
+                        break;
+
+                    //-------------------------------Move the arrow down on right
+                    case ConsoleKey.DownArrow:
+                        arrow2.moveArrow(true);
+                        break;
+                    //-------------------------------Move the arrow up on left
+                    case ConsoleKey.W:
+                        arrow1.moveArrow(false);
+                        break;
+
+                    //-------------------------------Move the arrow down on left
+                    case ConsoleKey.S:
+                        arrow1.moveArrow(true);
+                        break;
+                    //-------------------------------Return to main menu
+                    case ConsoleKey.Q:
+                        return;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

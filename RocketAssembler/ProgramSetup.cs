@@ -25,6 +25,7 @@ namespace RocketAssembler
             TextInitializer.LoadASCIIart();
 
             PartsList.loadParts();
+            RocketList.loadRockets();
 
             Console.CursorVisible = false;
             Console.WindowWidth = 120;

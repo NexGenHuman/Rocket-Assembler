@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using RocketAssembler.UtilityClasses;
 using RocketAssembler.GraphicalFuncs;
+using Newtonsoft.Json;
 
 namespace RocketAssembler.SubMenus
 {
@@ -37,6 +39,39 @@ namespace RocketAssembler.SubMenus
             return toWrite;
         }
 
+        public static void saveRockets()
+        {
+            TextWriter writer = null;
+            try
+            {
+                var contentsToWriteToFile = JsonConvert.SerializeObject(rockets);
+                writer = new StreamWriter("rockets.json", false);
+                writer.Write(contentsToWriteToFile);
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+            }
+        }
+
+        public static void loadRockets()
+        {
+            TextReader reader = null;
+            try
+            {
+                reader = new StreamReader("rockets.json");
+                var fileContents = reader.ReadToEnd();
+                rockets = JsonConvert.DeserializeObject<List<Rocket>>(fileContents);
+            } catch (Exception e)
+            { }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+            }
+        }
+
         public static void writeRocketList()
         {
             Console.Clear();
@@ -55,6 +90,8 @@ namespace RocketAssembler.SubMenus
 
             int prevWidth = 0, prevHeight = 0;
             int prevArrowPos = 1;
+
+            PresetGraphicDrawer.WriteControls(TextInitializer.rocketListControls);
 
             while (running)
             {
@@ -109,6 +146,15 @@ namespace RocketAssembler.SubMenus
 
                 switch (choice)
                 {
+                    //-------------------------------Deleting the rocket
+                    case ConsoleKey.Backspace:
+                        Console.Clear();
+                        if (PresetGraphicDrawer.AreYouSureScreenAlt())
+                        {
+                            rockets.RemoveAt(arrow.current);
+                            saveRockets();
+                        }
+                        return;
                     //-------------------------------Move the arrow up
                     case ConsoleKey.W:
                     case ConsoleKey.UpArrow:
@@ -122,6 +168,7 @@ namespace RocketAssembler.SubMenus
                         break;
                     //-------------------------------Return to main menu
                     case ConsoleKey.Q:
+                        saveRockets();
                         return;
                     default:
                         break;

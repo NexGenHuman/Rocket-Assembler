@@ -101,6 +101,12 @@ namespace RocketAssembler.GraphicalFuncs
                 case "areYouSure":
                     WriteCentered(TextInitializer.areYouSure, Console.WindowWidth, 15);
                     break;
+                case "areYouSureAlt":
+                    WriteCentered(TextInitializer.areYouSureAlt, Console.WindowWidth, 15);
+                    break;
+                case "enterRocketName":
+                    WriteCentered(TextInitializer.enter_rocket_name, Console.WindowWidth, 15);
+                    break;
                 case "partsList":
                     string partTemp = "";
                     foreach (var part in PartsList.allParts)
@@ -151,6 +157,44 @@ namespace RocketAssembler.GraphicalFuncs
                         default:
                             break;
                     }
+                }
+            }
+        }
+
+        static public bool AreYouSureScreenAlt()
+        {
+            while (true)
+            {
+                PresetGraphicDraw("areYouSureAlt", ConsoleColor.DarkRed);
+
+                char choice = Char.ToLower(Console.ReadKey(true).KeyChar);
+
+                switch (choice)
+                {
+                    case 'y':
+                        return true;
+                    case 'n':
+                        return false;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        static public string getRocketName()
+        {
+            Console.CursorVisible = true;
+            while (true)
+            {
+                Console.Clear();
+                PresetGraphicDraw("enterRocketName", ConsoleColor.White);
+
+                Console.SetCursorPosition(getOffset(Console.WindowWidth, 4), 16);
+                string returnString = Console.ReadLine();
+                if (returnString.Length > 0)
+                {
+                    Console.CursorVisible = false;
+                    return returnString;
                 }
             }
         }

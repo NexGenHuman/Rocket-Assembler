@@ -5,6 +5,11 @@
       "[ Y/N ]"
     ],
 
+    "are_you_sure_alt": [
+      "Are you sure?",
+      "[ Y/N ]"
+    ],
+
     "disclaimer": [
       "Disclaimer!",
       "This application does not represent real process of assembling rockets.",
@@ -38,6 +43,37 @@
       " Q - Return "
     ],
 
+    "build_rocket_controls": [
+      " W,↑ - Cursor up ",
+      " S,↓ - Cursor down ",
+      " D,→,A,← - Change part type ",
+      " Spacebar - Accept rocket ",
+      " Q - Return "
+    ],
+
+    "rocket_list_controls": [
+      " W,↑ - Cursor up ",
+      " S,↓ - Cursor down ",
+      " Backspace - Delete rocket ",
+      " Q - Return "
+    ],
+
+    "rockets_compare_controls": [
+      " W - Cursor up left ",
+      " S - Cursor down left ",
+      " ↑ - Cursor up right ",
+      " ↓ - Cursor down right ",
+      " Q - Return "
+    ],
+
+    "parts_compare_controls": [
+      " W - Cursor up left ",
+      " S - Cursor down left ",
+      " ↑ - Cursor up right ",
+      " ↓ - Cursor down right ",
+      " Q - Return "
+    ],
+
     "descriptors": {
       "type": "Type",
       "name": "Name",
@@ -53,13 +89,20 @@
       "orbital_stage": "Orbital stage",
       "capsule": "Capsule",
       "optional": "Optional",
-      "none": "None"
+      "none": "None",
+      "enter_rocket_name": "Enter rocket name:",
+      "different_types": "Different part types"
     }
   },
 
   "pl": {
     "are_you_sure": [
       "Czy jestes pewien ze chcesz wyjsc?",
+      "[ Y/N ]"
+    ],
+
+    "are_you_sure_alt": [
+      "Czy jestes pewien?",
       "[ Y/N ]"
     ],
 
@@ -96,6 +139,37 @@
       " Q - Powrot "
     ],
 
+    "build_rocket_controls": [
+      " W,↑ - Kursor w gore ",
+      " S,↓ - Kursor w dol ",
+      " D,→,A,← - Zmaina typu czesci ",
+      " Spacja - Akceptuj rakiete ",
+      " Q - Powrot "
+    ],
+
+    "rocket_list_controls": [
+      " W,↑ - Kursor w gore ",
+      " S,↓ - Kursor w dol ",
+      " Backspace - Usun rakiete ",
+      " Q - Powrot "
+    ],
+
+    "rockets_compare_controls": [
+      " W - Kursor w gore lewo ",
+      " S - Kursor w dol lewo ",
+      " ↑ - Kursor w gore prawo ",
+      " ↓ - Kursor w dol prawo ",
+      " Q - Powrot "
+    ],
+
+    "parts_compare_controls": [
+      " W - Kursor w gore lewo ",
+      " S - Kursor w dol lewo ",
+      " ↑ - Kursor w gore prawo ",
+      " ↓ - Kursor w dol prawo ",
+      " Q - Powrot "
+    ],
+
     "descriptors": {
       "type": "Typ",
       "name": "Nazwa",
@@ -111,7 +185,9 @@
       "orbital_stage": "Stopien orbitalny",
       "capsule": "Kapsula",
       "optional": "Opcjonalne",
-      "none": "Pusto"
+      "none": "Pusto",
+      "enter_rocket_name": "Wprowadz nazwe rakiety:",
+      "different_types": "Rozne typy czesci"
     }
   }
 }

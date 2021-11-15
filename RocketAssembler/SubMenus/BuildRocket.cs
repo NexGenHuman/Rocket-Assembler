@@ -196,6 +196,8 @@ namespace RocketAssembler.SubMenus
             PresetGraphicDrawer.WritePaddedLeft(PartsList.partDescription(capsules[0]), partPos.Item1, partPos.Item2);
             Console.SetCursorPosition(0, 0);
 
+            PresetGraphicDrawer.WriteControls(TextInitializer.buildRocketControls);
+
             while (running)
             {
                 bool decided = false;
@@ -310,6 +312,7 @@ namespace RocketAssembler.SubMenus
                         case ConsoleKey.Spacebar:
                             if (capsule && orbital && main)
                             {
+                                rocketToReturn.name = PresetGraphicDrawer.getRocketName();
                                 RocketList.rockets.Add(rocketToReturn);
                                 return;
                             }

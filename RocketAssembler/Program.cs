@@ -74,6 +74,7 @@ namespace RocketAssembler
                         //-------------------------------Compare rockets
                         case ConsoleKey.D3:
                             decided = true;
+                            CompareRockets.drawCompareRockets();
                             break;
 
                         //-------------------------------Part list

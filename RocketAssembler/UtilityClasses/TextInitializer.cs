@@ -11,6 +11,7 @@ namespace RocketAssembler.UtilityClasses
     {
         //---TEXT---
         public static string areYouSure;
+        public static string areYouSureAlt;
         public static string disclaimer;
         public static string menu;
         public static string welcome;
@@ -41,10 +42,16 @@ namespace RocketAssembler.UtilityClasses
         public static string capsule;
         public static string optional;
         public static string none;
+        public static string enter_rocket_name;
+        public static string different_types;
 
         //---CONTROLS---
         public static List<string> menuControls = new List<string>();
         public static List<string> partsListControls = new List<string>();
+        public static List<string> buildRocketControls = new List<string>();
+        public static List<string> rocketListControls = new List<string>();
+        public static List<string> rocketCompareControls = new List<string>();
+        public static List<string> partCompareControls = new List<string>();
 
         public static int menuCounter;
 
@@ -55,11 +62,16 @@ namespace RocketAssembler.UtilityClasses
                 //RESET
                 menuCounter = 0;
                 areYouSure = "";
+                areYouSureAlt = "";
                 disclaimer = "";
                 menu = "";
                 welcome = "";
                 menuControls.Clear();
                 partsListControls.Clear();
+                buildRocketControls.Clear();
+                rocketListControls.Clear();
+                rocketCompareControls.Clear();
+                partCompareControls.Clear();
 
                 string JSONtext = reader.ReadToEnd();
                 JObject Jobj = JObject.Parse(JSONtext);
@@ -67,6 +79,10 @@ namespace RocketAssembler.UtilityClasses
                 foreach(var str in Jobj[lang]["are_you_sure"])
                 {
                     areYouSure += str + "\n";
+                }
+                foreach (var str in Jobj[lang]["are_you_sure_alt"])
+                {
+                    areYouSureAlt += str + "\n";
                 }
                 foreach (var str in Jobj[lang]["disclaimer"])
                 {
@@ -97,6 +113,26 @@ namespace RocketAssembler.UtilityClasses
                     partsListControls.Add(str + "");
                 }
 
+                foreach (var str in Jobj[lang]["build_rocket_controls"])
+                {
+                    buildRocketControls.Add(str + "");
+                }
+
+                foreach (var str in Jobj[lang]["rocket_list_controls"])
+                {
+                    rocketListControls.Add(str + "");
+                }
+
+                foreach (var str in Jobj[lang]["rockets_compare_controls"])
+                {
+                    rocketCompareControls.Add(str + "");
+                }
+
+                foreach (var str in Jobj[lang]["parts_compare_controls"])
+                {
+                    partCompareControls.Add(str + "");
+                }
+
                 type = Jobj[lang]["descriptors"]["type"] + "";
                 name = Jobj[lang]["descriptors"]["name"] + "";
                 empty_mass = Jobj[lang]["descriptors"]["empty_mass"] + "";
@@ -112,6 +148,8 @@ namespace RocketAssembler.UtilityClasses
                 capsule = Jobj[lang]["descriptors"]["capsule"] + "";
                 optional = Jobj[lang]["descriptors"]["optional"] + "";
                 none = Jobj[lang]["descriptors"]["none"] + "";
+                enter_rocket_name = Jobj[lang]["descriptors"]["enter_rocket_name"] + "";
+                different_types = Jobj[lang]["descriptors"]["different_types"] + "";
 
                 reader.Close();
             }
